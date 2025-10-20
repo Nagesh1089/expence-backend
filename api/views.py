@@ -1,0 +1,22 @@
+# from django.shortcuts import render
+
+# # Create your views here.
+# from rest_framework import generics
+# from .models import Task
+# from .serializers import TaskSerializer
+
+# class TaskListCreate(generics.ListCreateAPIView):
+#     queryset = Task.objects.all()
+#     serializer_class = TaskSerializer
+
+# class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Task.objects.all()
+#     serializer_class = TaskSerializer
+
+from rest_framework import viewsets
+from .models import Expense
+from .serializers import ExpenseSerializer
+
+class ExpenseViewSet(viewsets.ModelViewSet):
+    queryset = Expense.objects.all().order_by('-id')
+    serializer_class = ExpenseSerializer
