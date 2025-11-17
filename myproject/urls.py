@@ -43,12 +43,17 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+from django.http import JsonResponse
 
 def home(request):
     return HttpResponse("Welcome to Django + React Expense Tracker!")
+
+def healthz(request):
+    return JsonResponse({"status": "ok"})
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('', home),
+    path("healthz", healthz),
 ]
